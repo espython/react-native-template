@@ -1,28 +1,17 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
+ * React Native Flib App
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
+import {useColorScheme} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Provider} from 'react-redux';
-import UserListComp from './components/UserListComp';
+import {Box, NativeBaseProvider, Text} from 'native-base';
+
 import store from './redux/store';
+import ListItem from './components/ListItem';
+// import HomeScreen from './screens/HomeScreen';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -32,12 +21,21 @@ const App = () => {
   };
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <Provider store={store}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <UserListComp />
-      </Provider>
-    </SafeAreaView>
+    <Provider store={store}>
+      <NativeBaseProvider>
+        <NavigationContainer>
+          <Box
+            flex={1}
+            bg="cyan.400"
+            alignItems="center"
+            justifyContent="center"
+            safeArea>
+            <Text>Open up App.js to start working on your app!</Text>
+            <ListItem />
+          </Box>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    </Provider>
   );
 };
 
