@@ -3,7 +3,7 @@ import React from 'react';
 import ListItem from '../components/ListItem';
 import UserListComp from '../components/UserListComp';
 
-const HomeScreen = () => {
+const ForYouScreen = () => {
   return (
     <Box flex={1} bg="#fff" alignItems="center" justifyContent="center">
       <UserListComp />
@@ -12,4 +12,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default ForYouScreen;

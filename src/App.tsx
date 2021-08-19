@@ -6,11 +6,12 @@ import React from 'react';
 import {useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
-import {Box, NativeBaseProvider, Text} from 'native-base';
+import {Flex, NativeBaseProvider} from 'native-base';
 
 import store from './redux/store';
-import ListItem from './components/ListItem';
+import ForYouTbaNav from './navigations/ForYouTbaNav';
 // import HomeScreen from './screens/HomeScreen';
 
 const App = () => {
@@ -23,17 +24,13 @@ const App = () => {
   return (
     <Provider store={store}>
       <NativeBaseProvider>
-        <NavigationContainer>
-          <Box
-            flex={1}
-            bg="cyan.400"
-            alignItems="center"
-            justifyContent="center"
-            safeArea>
-            <Text>Open up App.js to start working on your app!</Text>
-            <ListItem />
-          </Box>
-        </NavigationContainer>
+        <SafeAreaProvider>
+          <Flex flex={1} safeArea>
+            <NavigationContainer>
+              <ForYouTbaNav />
+            </NavigationContainer>
+          </Flex>
+        </SafeAreaProvider>
       </NativeBaseProvider>
     </Provider>
   );
